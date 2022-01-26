@@ -1,0 +1,78 @@
+keycloak:
+  enabled: false
+  enable-basic-auth: false  # basic auth is default true, we dont want that
+  realm: cynosure/   # our keycloak realm this resource service should be based in
+  resource: api-gateway  # the realm-client which accessing clients should be authenticate with
+  use-resource-role-mappings: false # use this if you manage your roles in client scope not in realm scope
+  public-client: false # we do not write a web-app - so no login page and redirects are necessary
+
+zuul:
+  semaphore:
+    maxSemaphores: 30000
+  remove-semicolon-content: false
+  ribbon:
+    eager-load:
+      enabled: true
+  ignoredServices: '*'
+  routes:
+    application-service:
+      path: /applications/**
+      sensitiveHeaders:
+      serviceId: application-service
+      stripPrefix: false
+    kkb-service:
+      path: /kkb/**
+      sensitiveHeaders:
+      serviceId: kkb-service
+      stripPrefix: false
+    notification-service:
+      path: /notification/**
+      sensitiveHeaders:
+      serviceId: notification-service
+      stripPrefix: false
+
+
+application-service:
+  ribbon:
+    listOfServers: http://localhost:7001
+    ConnectTimeout: 10000
+    ReadTimeout: 30000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100
+
+kkb-service:
+  ribbon:
+    listOfServers: http://localhost:7002
+    ConnectTimeout: 10000
+    ReadTimeout: 30000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100
+
+notification-service:
+  ribbon:
+    listOfServers: http://localhost:7003
+    ConnectTimeout: 10000
+    ReadTimeout: 30000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100
+
+server:
+  port: 7000
+
+spring:
+  application:
+    name: api-gateway-service
+
+endpoints:
+  enabled: false
+  routes:
+    enabled: true
+  health:
+    enabled: true
+  info:
+    enabled: true
+
+info:
+  status: OK
+  version: ${VERSION:1}
+  env: local
