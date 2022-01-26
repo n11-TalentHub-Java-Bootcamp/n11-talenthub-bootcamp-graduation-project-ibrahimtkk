@@ -30,7 +30,7 @@ public class CreateApplicationValidationService {
     public void validateShouldReturnBirthdateNotValidErrorWhenGivenBirthdateIsNull() {
 
         final ApplicationRequestDto request = new ApplicationRequestDto();
-        request.setTCKN("11223334455");
+        request.setTckn("11223334455");
         final ValidationResult result = validationService.validate(request);
 
         assertThat(result.getIsValid(), is(Boolean.FALSE));
@@ -42,7 +42,7 @@ public class CreateApplicationValidationService {
     public void validateShouldReturnNameNotValidErrorWhenGivenNameIsNull() {
 
         final ApplicationRequestDto request = new ApplicationRequestDto();
-        request.setTCKN("11223334455");
+        request.setTckn("11223334455");
         request.setBirthdate("2022-11-21");
         final ValidationResult result = validationService.validate(request);
 
@@ -55,7 +55,7 @@ public class CreateApplicationValidationService {
     public void validateShouldReturnSurnameNotValidErrorWhenGivenSurnameIsNull() {
 
         final ApplicationRequestDto request = new ApplicationRequestDto();
-        request.setTCKN("11223334455");
+        request.setTckn("11223334455");
         request.setBirthdate("2022-11-21");
         request.setName("ibrahim");
         final ValidationResult result = validationService.validate(request);
@@ -69,7 +69,7 @@ public class CreateApplicationValidationService {
     public void validateShouldReturnPhoneNotValidErrorWhenGivenPhoneIsNull() {
 
         final ApplicationRequestDto request = new ApplicationRequestDto();
-        request.setTCKN("11223334455");
+        request.setTckn("11223334455");
         request.setBirthdate("2022-11-21");
         request.setName("ibrahim");
         request.setSurname("miharbi");

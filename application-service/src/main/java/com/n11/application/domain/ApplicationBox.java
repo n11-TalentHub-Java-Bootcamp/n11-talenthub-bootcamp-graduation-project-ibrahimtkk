@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ApplicationBox {
 
     private UserInfo userInfo;
-    private InitiateType initiateType;
+    private CreditType creditType;
 
     // bunun asagisini servis kendi üretiyor
     private String result;
@@ -20,7 +20,7 @@ public class ApplicationBox {
     public ApplicationBox prepareApplicationBox() {
         this.userInfo = new UserInfo();
         // ileride ticari kredilerin gelme ihtimaline karşı eklenmiştir(oyle bir durumdan initiateType request olarak alinacaktir)
-        this.setInitiateType(InitiateType.PERSONALCREDIT);
+        this.setCreditType(CreditType.PERSONALCREDIT);
         return this;
     }
 

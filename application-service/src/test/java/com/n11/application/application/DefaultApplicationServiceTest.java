@@ -1,12 +1,9 @@
 package com.n11.application.application;
 
 import com.n11.application.domain.ApplicationBox;
-import com.n11.application.domain.InitiateType;
-import com.n11.application.domain.flow.initiate.DefaultInitiateStrategyProvider;
-import com.n11.application.domain.flow.initiate.InitiatePersonalCredit;
+import com.n11.application.domain.CreditType;
 import com.n11.application.domain.flow.initiate.InitiateStrategy;
 import com.n11.application.domain.flow.initiate.InitiateStrategyProvider;
-import com.n11.application.domain.service.ApplicationAppService;
 import com.n11.application.interfaces.request.ApplicationRequestDto;
 import com.n11.application.interfaces.response.ApplicationResponseDto;
 import org.junit.jupiter.api.Test;
@@ -29,12 +26,12 @@ public class DefaultApplicationServiceTest {
     public void shouldReturnTrue() {
 
         final ApplicationRequestDto request = new ApplicationRequestDto();
-        request.setTCKN("11223334455");
+        request.setTckn("11223334455");
         request.setBirthdate("2022-11-21");
         request.setName("ibrahim");
         request.setSurname("ibrahimke");
 
-        when(initiateStrategyProvider.provide(InitiateType.PERSONALCREDIT)).thenReturn(initiateStrategy);
+        when(initiateStrategyProvider.provide(CreditType.PERSONALCREDIT)).thenReturn(initiateStrategy);
         doThrow(new RuntimeException()).doNothing().when(initiateStrategy).initiate(applicationBox);
 
         ApplicationResponseDto applicationResponseDto = defaultApplicationService.initiate(request);

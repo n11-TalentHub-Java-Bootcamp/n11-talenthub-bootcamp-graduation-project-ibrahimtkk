@@ -11,7 +11,7 @@ public class ApplicationRequestValidationService implements ValidationService<Ap
     @Override
     public ValidationResult validate(ApplicationRequestDto request) {
 
-        if (StringUtils.isBlank(request.getTCKN()) || request.getTCKN().length() != 11) {
+        if (StringUtils.isBlank(request.getTckn()) || request.getTckn().length() != 11) {
             return ValidationResult.error("TCKN is not acceptable.", ErrorCode.TCKNISNOTVALID);
         }
         if (StringUtils.isBlank(request.getBirthdate())) {

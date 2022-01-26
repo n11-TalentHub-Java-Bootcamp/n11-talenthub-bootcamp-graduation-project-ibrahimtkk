@@ -1,12 +1,7 @@
 package com.n11.application.domain;
 
-import com.n11.application.application.validation.ValidationResult;
-import com.n11.application.interfaces.ErrorCode;
-import com.n11.application.interfaces.request.ApplicationRequestDto;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -22,7 +17,7 @@ public class ApplicationBoxTest {
     public void shouldReturnInitiateTypeIsPersonal() {
 
         applicationBox.prepareApplicationBox();
-        assertThat(applicationBox.getInitiateType(), is(InitiateType.PERSONALCREDIT));
+        assertThat(applicationBox.getCreditType(), is(CreditType.PERSONALCREDIT));
     }
 
     @Test

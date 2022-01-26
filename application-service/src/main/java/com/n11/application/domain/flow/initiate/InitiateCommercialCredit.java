@@ -17,16 +17,21 @@ public class InitiateCommercialCredit implements InitiateStrategy{
 
     @Override
     public void initiate(ApplicationBox applicationBox) {
-//        log.info("Initiate Personal Credit");
-//
-//        final Handler calculateKkbHandler = handlerFactory.create(HandlerType.KKB_CALCULATE);
-//        final Handler decideHandler = handlerFactory.create(HandlerType.DECIDE);
-//        final Handler saveApplicationHandler = handlerFactory.create(HandlerType.APPLICATION_SAVE);
-//
-//        calculateKkbHandler.setSuccessor(decideHandler);
-//        decideHandler.setSuccessor(saveApplicationHandler);
-//
-//        calculateKkbHandler.handle(applicationBox);
+
+    }
+
+    @Override
+    public void modify(ApplicationBox applicationBox) {
+
+    }
+
+    @Override
+    public void delete(ApplicationBox applicationBox) {
+
+    }
+
+    @Override
+    public void query(ApplicationBox applicationBox) {
 
     }
 }

@@ -1,8 +1,6 @@
 package com.n11.application.domain.flow;
 
-import com.n11.application.domain.flow.initiate.DecideCreditHandler;
-import com.n11.application.domain.flow.initiate.SaveApplicationHandler;
-import com.n11.application.domain.flow.initiate.kkbCalculateHandler;
+import com.n11.application.domain.flow.initiate.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -19,6 +17,15 @@ public final class HandlerFactory {
     @Autowired
     DecideCreditHandler decideCreditHandler;
 
+    @Autowired
+    ModifyApplicationHandler modifyApplicationHandler;
+
+    @Autowired
+    DeleteApplicationHandler deleteApplicationHandler;
+
+    @Autowired
+    QueryApplicationHandler queryApplicationHandler;
+
     public Handler create(HandlerType handlerType) {
         switch (handlerType) {
             case APPLICATION_SAVE:
@@ -27,6 +34,12 @@ public final class HandlerFactory {
                 return kkbCalculateHandler;
             case DECIDE:
                 return decideCreditHandler;
+            case APPLICATION_MODIFY:
+                return modifyApplicationHandler;
+            case APPLICATION_DELETE:
+                return deleteApplicationHandler;
+            case APPLICATION_QUERY:
+                return queryApplicationHandler;
 
             default:
                 throw new IllegalArgumentException("Invalid handler type: " + handlerType.toString());

@@ -1,8 +1,7 @@
 package com.n11.application.domain;
 
 import com.n11.application.interfaces.request.ApplicationRequestDto;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 import java.text.DateFormat;
@@ -16,7 +15,6 @@ import java.util.Date;
 public class UserInfo {
 
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    Date date;
 
     private String TCKN;
     private String name;
@@ -28,7 +26,7 @@ public class UserInfo {
 
 
     public void createNewUser(ApplicationRequestDto applicationRequestDto) {
-        this.TCKN = applicationRequestDto.getTCKN();
+        this.TCKN = applicationRequestDto.getTckn();
         this.name = applicationRequestDto.getName();
         this.surname = applicationRequestDto.getSurname();
         this.income = applicationRequestDto.getIncome();
