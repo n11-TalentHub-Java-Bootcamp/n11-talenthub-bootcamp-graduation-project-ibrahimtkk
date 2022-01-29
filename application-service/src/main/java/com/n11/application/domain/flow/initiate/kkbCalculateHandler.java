@@ -2,9 +2,9 @@ package com.n11.application.domain.flow.initiate;
 
 import com.n11.application.domain.ApplicationBox;
 import com.n11.application.domain.flow.Handler;
+import com.n11.application.interfaces.ApiError;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
@@ -21,7 +21,7 @@ public class kkbCalculateHandler implements Handler {
     }
 
     @Override
-    public void handle(ApplicationBox applicationBox) {
+    public ResponseEntity<ApiError> handle(ApplicationBox applicationBox) {
 
         Random random = new Random();
         int minScore = 200;
@@ -30,5 +30,6 @@ public class kkbCalculateHandler implements Handler {
         applicationBox.setKkbScore(kkbScore);
 
         if (this.successor != null) this.successor.handle(applicationBox);
+        return null;
     }
 }

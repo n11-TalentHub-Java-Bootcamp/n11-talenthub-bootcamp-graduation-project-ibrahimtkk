@@ -18,6 +18,9 @@ public final class HandlerFactory {
     DecideCreditHandler decideCreditHandler;
 
     @Autowired
+    AssuranceHandler assuranceHandler;
+
+    @Autowired
     ModifyApplicationHandler modifyApplicationHandler;
 
     @Autowired
@@ -40,6 +43,8 @@ public final class HandlerFactory {
                 return deleteApplicationHandler;
             case APPLICATION_QUERY:
                 return queryApplicationHandler;
+            case ASSURANCE:
+                return assuranceHandler;
 
             default:
                 throw new IllegalArgumentException("Invalid handler type: " + handlerType.toString());

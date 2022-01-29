@@ -28,7 +28,7 @@ public class Application {
     private String surname;
 
     @Column(name = "GELIR")
-    private Integer income;
+    private Double income;
 
     @Column(name = "TELEFON")
     private String phone;
@@ -37,7 +37,7 @@ public class Application {
     private Date birthdate;
 
     @Column(name = "TEMINAT")
-    private String Assurance;
+    private Double assurance;
 
     @Column(name = "KKB_SKORU")
     private Integer kkbScore;
@@ -46,6 +46,6 @@ public class Application {
     private String result;
 
     @Column(name = "KREDI_LIMIT")
-    private Integer limit;
+    private Double limit;
 
 }

@@ -5,9 +5,10 @@ import com.n11.application.domain.flow.Handler;
 import com.n11.application.infrastructure.acl.entity.Application;
 import com.n11.application.infrastructure.acl.repository.ApplicationRepository;
 import com.n11.application.infrastructure.mapper.ApplicationMapper;
+import com.n11.application.interfaces.ApiError;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -25,7 +26,7 @@ public class SaveApplicationHandler implements Handler {
     }
 
     @Override
-    public void handle(ApplicationBox applicationBox) {
+    public ResponseEntity<ApiError> handle(ApplicationBox applicationBox) {
 
         log.info("Application creation started..");
 
@@ -34,5 +35,6 @@ public class SaveApplicationHandler implements Handler {
         applicationRepository.save(application);
 
         if (this.successor != null) this.successor.handle(applicationBox);
+        return null;
     }
 }

@@ -19,10 +19,10 @@ public class UserInfo {
     private String TCKN;
     private String name;
     private String surname;
-    private Integer income;
+    private Double income;
     private String phone;
     private Date birthdate;
-    private String assurance;
+    private Double assurance;
 
 
     public void createNewUser(ApplicationRequestDto applicationRequestDto) {
@@ -31,6 +31,7 @@ public class UserInfo {
         this.surname = applicationRequestDto.getSurname();
         this.income = applicationRequestDto.getIncome();
         this.phone = applicationRequestDto.getPhone();
+        this.assurance = applicationRequestDto.getAssurance();
         try {
             this.birthdate = dateFormat.parse(applicationRequestDto.getBirthdate());
         } catch (ParseException e) {

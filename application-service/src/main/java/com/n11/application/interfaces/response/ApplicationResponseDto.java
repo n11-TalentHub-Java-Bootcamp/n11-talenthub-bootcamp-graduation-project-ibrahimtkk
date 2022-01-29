@@ -8,6 +8,6 @@ import lombok.Setter;
 public class ApplicationResponseDto {
 
     private Integer kkbScore;
-    private Integer limit;
+    private Double limit;
     private String result;
 }

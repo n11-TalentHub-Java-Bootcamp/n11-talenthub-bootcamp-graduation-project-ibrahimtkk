@@ -15,7 +15,7 @@ public class ApplicationBox {
     // bunun asagisini servis kendi üretiyor
     private String result;
     private Integer kkbScore;
-    private Integer limit;
+    private Double limit;
 
     public ApplicationBox prepareApplicationBox() {
         this.userInfo = new UserInfo();

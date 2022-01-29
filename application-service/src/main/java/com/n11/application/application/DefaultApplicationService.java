@@ -101,15 +101,15 @@ public class DefaultApplicationService implements ApplicationAppService {
     }
 
 
-    private void buildInitiateApplicationResponse(ApplicationBox applicationBox, ApplicationResponseDto applicationResponseDto) {
+    public void buildInitiateApplicationResponse(ApplicationBox applicationBox, ApplicationResponseDto applicationResponseDto) {
         applicationResponseDto.setKkbScore(applicationBox.getKkbScore());
         applicationResponseDto.setResult(applicationBox.getResult());
         applicationResponseDto.setLimit(applicationBox.getLimit());
     }
 
-    private void buildQueryApplicationResponse(ApplicationBox applicationBox, ApplicationResponseDto applicationResponseDto) {
-        applicationResponseDto.setKkbScore(applicationBox.getKkbScore());
-        applicationResponseDto.setResult(applicationBox.getResult());
-        applicationResponseDto.setLimit(applicationBox.getLimit());
-    }
+//    private void buildQueryApplicationResponse(ApplicationBox applicationBox, ApplicationResponseDto applicationResponseDto) {
+//        applicationResponseDto.setKkbScore(applicationBox.getKkbScore());
+//        applicationResponseDto.setResult(applicationBox.getResult());
+//        applicationResponseDto.setLimit(applicationBox.getLimit());
+//    }
 }

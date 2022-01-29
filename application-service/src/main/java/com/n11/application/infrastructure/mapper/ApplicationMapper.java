@@ -4,7 +4,6 @@ import com.n11.application.domain.ApplicationBox;
 import com.n11.application.domain.CreditType;
 import com.n11.application.domain.UserInfo;
 import com.n11.application.infrastructure.acl.entity.Application;
-import com.n11.application.interfaces.request.ApplicationRequestDto;
 import com.n11.application.interfaces.request.DeleteApplicationRequestDto;
 import com.n11.application.interfaces.request.ModifyApplicationRequestDto;
 import lombok.extern.slf4j.Slf4j;

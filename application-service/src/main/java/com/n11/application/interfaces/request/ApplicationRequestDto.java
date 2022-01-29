@@ -11,8 +11,8 @@ public class ApplicationRequestDto {
     private String tckn;
     private String name;
     private String surname;
-    private Integer income;
+    private Double income;
     private String phone;
     private String birthdate;
-    private String assurance;
+    private Double assurance;
 }

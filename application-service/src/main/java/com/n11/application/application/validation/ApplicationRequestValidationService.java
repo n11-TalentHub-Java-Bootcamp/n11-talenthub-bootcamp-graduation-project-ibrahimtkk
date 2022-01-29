@@ -23,7 +23,7 @@ public class ApplicationRequestValidationService implements ValidationService<Ap
         if (StringUtils.isBlank(request.getSurname())) {
             return ValidationResult.error("Surname is not acceptable.", ErrorCode.SURNAMEISNOTVALID);
         }
-        if (StringUtils.isBlank(request.getPhone())) {
+        if (StringUtils.isBlank(request.getPhone()) || request.getPhone().length() != 10) {
             return ValidationResult.error("Phone is not acceptable.", ErrorCode.PHONEISNOTVALID);
         }
 

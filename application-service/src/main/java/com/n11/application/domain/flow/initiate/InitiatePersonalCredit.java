@@ -20,19 +20,18 @@ public class InitiatePersonalCredit implements InitiateStrategy{
     @Autowired
     private HandlerFactory handlerFactory;
 
-    @Autowired
-    private ApplicationRepository applicationRepository;
-
     @Override
     public void initiate(ApplicationBox applicationBox) {
         log.info("Initiate Personal Credit");
 
         final Handler calculateKkbHandler = handlerFactory.create(HandlerType.KKB_CALCULATE);
         final Handler decideHandler = handlerFactory.create(HandlerType.DECIDE);
+        final Handler assuranceHandler = handlerFactory.create(HandlerType.ASSURANCE);
         final Handler saveApplicationHandler = handlerFactory.create(HandlerType.APPLICATION_SAVE);
 
         calculateKkbHandler.setSuccessor(decideHandler);
-        decideHandler.setSuccessor(saveApplicationHandler);
+        decideHandler.setSuccessor(assuranceHandler);
+        assuranceHandler.setSuccessor(saveApplicationHandler);
 
         calculateKkbHandler.handle(applicationBox);
 
@@ -49,7 +48,7 @@ public class InitiatePersonalCredit implements InitiateStrategy{
 
     @Override
     public void delete(ApplicationBox applicationBox) {
-        log.info("Modify Personal Credit");
+        log.info("Delete Personal Credit");
 
         final Handler deleteApplicationHandler = handlerFactory.create(HandlerType.APPLICATION_DELETE);
 
@@ -58,7 +57,7 @@ public class InitiatePersonalCredit implements InitiateStrategy{
 
     @Override
     public void query(ApplicationBox applicationBox) {
-        log.info("Modify Personal Credit");
+        log.info("Initiate Personal Credit");
 
         final Handler queryApplicationHandler = handlerFactory.create(HandlerType.APPLICATION_QUERY);
 

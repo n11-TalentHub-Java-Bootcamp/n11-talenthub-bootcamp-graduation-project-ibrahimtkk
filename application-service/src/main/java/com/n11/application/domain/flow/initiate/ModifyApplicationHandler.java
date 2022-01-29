@@ -4,10 +4,11 @@ import com.n11.application.domain.ApplicationBox;
 import com.n11.application.domain.flow.Handler;
 import com.n11.application.infrastructure.acl.entity.Application;
 import com.n11.application.infrastructure.acl.repository.ApplicationRepository;
-import com.n11.application.infrastructure.mapper.ApplicationMapper;
+import com.n11.application.interfaces.ApiError;
 import io.micrometer.core.instrument.util.StringUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,14 +28,14 @@ public class ModifyApplicationHandler implements Handler {
     }
 
     @Override
-    public void handle(ApplicationBox applicationBox) {
+    public ResponseEntity<ApiError> handle(ApplicationBox applicationBox) {
 
         log.info("Application creation started..");
 
         final List<Application> applicationList = applicationRepository.findByTCKNAndBirthdate(applicationBox.getUserInfo().getTCKN(), applicationBox.getUserInfo().getBirthdate());
         if (applicationList == null) {
             log.debug("Could not found that application");
-            return;
+            return null;
         }
 
         final Application application = applicationList.get(applicationList.size() -1);
@@ -46,7 +47,7 @@ public class ModifyApplicationHandler implements Handler {
         if (applicationBox.getUserInfo().getIncome() != null) {
             application.setIncome(applicationBox.getUserInfo().getIncome());
         }
-        if (!StringUtils.isBlank(applicationBox.getUserInfo().getAssurance())) {
+        if (applicationBox.getUserInfo().getAssurance() != null) {
             application.setAssurance(applicationBox.getUserInfo().getAssurance());
         }
         if (!StringUtils.isBlank(applicationBox.getUserInfo().getPhone())) {
@@ -55,5 +56,6 @@ public class ModifyApplicationHandler implements Handler {
         applicationRepository.save(application);
 
         if (this.successor != null) this.successor.handle(applicationBox);
+        return null;
     }
 }

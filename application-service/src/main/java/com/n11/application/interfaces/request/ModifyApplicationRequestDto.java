@@ -9,7 +9,7 @@ public class ModifyApplicationRequestDto {
 
     private String tckn;
     private String birthdate;
-    private Integer income;
+    private Double income;
     private String phone;
-    private String assurance;
+    private Double assurance;
 }

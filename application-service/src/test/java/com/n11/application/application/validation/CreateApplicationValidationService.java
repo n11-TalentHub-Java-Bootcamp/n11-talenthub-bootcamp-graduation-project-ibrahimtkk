@@ -2,8 +2,7 @@ package com.n11.application.application.validation;
 
 import com.n11.application.interfaces.ErrorCode;
 import com.n11.application.interfaces.request.ApplicationRequestDto;
-import org.junit.jupiter.api.Test;
-//import org.junit.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
