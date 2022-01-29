@@ -32,7 +32,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.9'
     runtimeOnly 'org.postgresql:postgresql'
     annotationProcessor 'org.projectlombok:lombok'
-//    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.4'
+
 }
 
 //test {
