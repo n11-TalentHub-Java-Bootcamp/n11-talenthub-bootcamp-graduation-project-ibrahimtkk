@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+
+  application-service:
+    build: ./
+    container_name: application-service
+    ports:
+      - 7000:7000
+    depends_on:
+      - n11-postgres
+    environment:
+      - SPRING_DATASOURCE_URL= jdbc:postgresql://n11-postgres:5432/postgres?currentSchema=public
+
+  n11-postgres:
+    image: postgres:14.1-alpine
+    container_name: n11postgres
+    volumes:
+      - n11-postgres-data:/var/lib/postgresql/data
+      - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=postgres
+    ports:
+      - 5440:5432
+    
+
+  
+volumes:
+  n11-postgres-data:
+    driver: local
